@@ -26,6 +26,8 @@ func main() {
 				res, err := http.Get(summaryAPIEndpoint)
 				if err != nil {
 					fmt.Println(err)
+					wg.Done()
+					return
 				}
 				if res.StatusCode != 200 {
 					fmt.Printf("statusCode:%s\n", res.Status)
